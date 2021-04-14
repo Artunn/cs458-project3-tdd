@@ -7,3 +7,7 @@ test('Check coordinate value',()=>{
   expect(partone.controlCoordinate('4')).toBe(false);
   expect(partone.controlCoordinate(90,"X")).toBe(false);
 })
+
+test('Check get city function',()=>{
+
+})
