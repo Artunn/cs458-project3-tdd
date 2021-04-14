@@ -9,5 +9,7 @@ test('Check coordinate value',()=>{
 })
 
 test('Check get city function',()=>{
-
+  expect(partone.getCity(39.9334,32.8597)).toMatch('/[A|a]nkara');
+  expect(partone.getCity(41.0082, 28.9784)).toMatch('/[I|i]stanbul');
+  expect(partone.getCity(40.4168,-3.7038)).toMatch('/[M|m]adrid');
 })
