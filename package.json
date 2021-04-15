@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,10 @@
     "jest": "^26.6.3"
   },
   "dependencies": {
+    "asserts": "^4.0.2",
     "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
     "selenium-webdriver": "^4.0.0-beta.3"
   }
 }
