@@ -20,21 +20,24 @@ function initMap() {
     });
 }
 
-// async function buttonTrigger(){
-//     let cityname = "";
-//     let coordinate1 = document.getElementById("parta-coordinate1").value;
-//     let coordinate2 = document.getElementById("parta-coordinate2").value;
-//     if(controlCoordinate(coordinate1, coordinate2)){
-//         const pos = {
-//             lat: parseFloat(coordinate1),
-//             lng: parseFloat(coordinate2)
-//           };
-//         console.log(pos)
-//         map.setCenter(pos);
-//         cityname = await getCity(coordinate1,coordinate2);
-//     }
-//     document.getElementById("parta-textdata").innerText = cityname;
-// }
+async function buttonTrigger(){
+    let cityname = "";
+    let coordinate1 = document.getElementById("parta-coordinate1").value;
+    let coordinate2 = document.getElementById("parta-coordinate2").value;
+    if(controlCoordinate(coordinate1, coordinate2)){
+        const pos = {
+            lat: parseFloat(coordinate1),
+            lng: parseFloat(coordinate2)
+          };
+        console.log(pos)
+        map.setCenter(pos);
+        cityname = await getCity(coordinate1,coordinate2);
+        document.getElementById("parta-textdata").innerText = cityname;
+    }else{
+        document.getElementById("parta-textdata").innerText = "Problematic coordinate input";
+    }
+    
+}
 
 function makeRequest(method, url, done) {
     var xhr = new XMLHttpRequest();
