@@ -8,9 +8,10 @@ test('Check coordinate value',()=>{
   expect(partone.controlCoordinate(90,"X")).toBe(false);
 })
 
-test('Check get city function',async ()=>{
-  expect.assertions(3);
-  await partone.getCity(39.9334,32.8597).then(data=>{ expect(data).toMatch(/[A|a]nkara/)});
-  await partone.getCity(41.0082, 28.9784).then(data=>{ expect(data).toMatch(/[I|i|İ]stanbul/)});
-  await partone.getCity(40.4168,-3.7038).then(data=>{ expect(data).toMatch(/[M|m]adrid/)});
+test.each([
+  [39.9334,32.8597,/[A|a]nkara/],
+  [41.0082, 28.9784,/[I|i|İ]stanbul/],
+  [40.4168,-3.7038,/[M|m]adrid/],
+])('Check Distance Calculating',(coordinate1, coordinate2, expectedCity)=>{
+  return expect(partone.getCity(coordinate1, coordinate2)).resolves.toMatch(expectedCity);
 })
