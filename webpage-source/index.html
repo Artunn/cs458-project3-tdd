@@ -19,11 +19,14 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFr6F19kpa0aYoBWUM11xDPQQfMeS5vw0&callback=initMap&libraries=&v=weekly"
         async>
         </script>
-
-    <input type="text" id="parta-coordinate1"></input>
-    <input type="text" id="parta-coordinate2"></input>
-    <input type="button" id="parta-sendbutton" onclick="buttonTrigger()"></input>
-    <h2 id="parta-textdata"></h2>
+    <div class="parta">
+        <div class="inputsandstuff">
+        <input type="text" id="parta-coordinate1" placeholder="Coordinate 1"></input>
+        <input type="text" id="parta-coordinate2" placeholder="Coordinate 2"></input>
+        <button id="parta-sendbutton" onclick="buttonTrigger()">Search coordinates</button>
+        <h1 id="parta-textdata"></h1>
+    </div>
+    </div>
 </body>
 
 </html>
