@@ -4,29 +4,25 @@ test = require('selenium-webdriver/testing');
 webdriver = require('selenium-webdriver');
 
 describe('Part two test cases', function () {
-  const url = "file:///W:/Desktop/Bilkent/CS458/Projects/cs458-project3-tdd/webpage-source/index.html";
+  const url = "file:///D:/CS/Current/cs458-project3-tdd/webpage-source/index.html";
   let driver = new Builder().forBrowser("firefox").build();
   driver.get(url);
-  let coordinate1, coordinate2, sendbutton;
+
   //Check existance of coordinate1
   describe('#Check existance of text fields and buttons', function () {
-    it('#Coordinate 1 text field must not be null', function () {
-      coordinate1 = driver.findElement(By.id("partb-button"));
-      driver.wait(until.elementIsVisible(coordinate1), 100);
-      assert.notEqual(coordinate1, null);
-    })
+    it('#Part B Button Should Exist', function () {
+      
+      return driver.wait(until.elementLocated(By.id('partb-button')), 10 * 1000).then(el => {});
+    }).timeout(20000)
 
-    it('#Coordinate 2 text field must not be null', function () {
-      coordinate2 = driver.findElement(By.id("partb-textlabel1"));
-      driver.wait(until.elementIsVisible(coordinate2), 100);
-      assert.notEqual(coordinate2, null);
-    })
+    it('#Part B Text Label 1 Should Exist (Dist to Nearest City Center)', function () {
+      
+      return driver.wait(until.elementLocated(By.id('partb-textlabel1')), 10 * 1000).then(el => {});
+    }).timeout(20000)
 
-    it('#Coordinate 2 text field must not be null', function () {
-      coordinate2 = driver.findElement(By.id("partb-textlabel2"));
-      driver.wait(until.elementIsVisible(coordinate2), 100);
-      assert.notEqual(coordinate2, null);
-    })
+    it('#Part B Text Label 2 Should Exist (Dist to City Center)', function () {
+      return driver.wait(until.elementLocated(By.id('partb-textlabel2')), 10 * 1000).then(el => {});
+    }).timeout(20000)
 
   })
 })
