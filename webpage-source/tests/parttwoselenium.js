@@ -24,5 +24,11 @@ describe('Part two test cases', function () {
       return driver.wait(until.elementLocated(By.id('partb-textlabel2')), 10 * 1000).then(el => {});
     }).timeout(20000)
 
+    it('#Get Values)', function () {
+      return driver.wait(until.elementLocated(By.id('partb-textlabel2')), 10 * 1000).then(el => {
+        el.click();
+        
+      });
+    }).timeout(10000)
   })
 })
