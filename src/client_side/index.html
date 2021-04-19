@@ -7,6 +7,9 @@
     <title>Project #3</title>
     <meta name="description" content="Project #3">
     <meta name="author" content="V&V">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -16,23 +19,31 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFr6F19kpa0aYoBWUM11xDPQQfMeS5vw0&callback=initMap&libraries=&v=weekly"
         async>
-    </script>
-	
+        </script>
+
     <script src="scripts.js">
-        
-	</script>
-	
-    <div class="parta">
-        <div class="inputsandstuff">
-        <input type="text" id="parta-coordinate1" placeholder="Coordinate 1"></input>
-        <input type="text" id="parta-coordinate2" placeholder="Coordinate 2"></input>
-        <button id="parta-sendbutton" onclick="partAButtonTrigger()">Search coordinates</button>
-        <h1 id="parta-textdata"></h1>
-    </div>
-    <div class="partb">
-        <button id="partb-button" onclick="partBButtonTrigger()">Find Nearest City Via Location</button>
-        <p>Distance to the Nearest City Center: <span id="partb-textlabel1"></span></p>
-        <p>Distance to the current City Center: <span id="partb-textlabel2"></span></p>
+
+    </script>
+
+    <div class="parts">
+        <h1>Introduction to TDD</h1>
+        <h2>Part A</h2>
+        <div class="parta">
+            <div class="inputsandstuff">
+                <input type="text" id="parta-coordinate1" placeholder="Coordinate 1"></input>
+                <input type="text" id="parta-coordinate2" placeholder="Coordinate 2"></input>
+                <button id="parta-sendbutton" onclick="partAButtonTrigger()">Search coordinates</button>
+                <h1 id="parta-textdata"></h1>
+            </div>
+        </div>
+        <h2>Part B</h2>
+        <div class="partb">
+            <div class="inputsandstuff">
+                <button id="partb-button" onclick="partBButtonTrigger()">Find Nearest City Via Location</button>
+                <p>Distance to the Nearest City Center: <span id="partb-textlabel1"></span></p>
+                <p>Distance to the current City Center: <span id="partb-textlabel2"></span></p>
+            </div>
+        </div>
     </div>
 </body>
 
