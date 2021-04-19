@@ -35,4 +35,19 @@ async function getResponse(url) {
   return await axios.get(url)
 }
 
-module.exports = { getCity, getResponse }
+
+function controlCoordinate(coordinateNum1, coordinateNum2) {
+    if (coordinateNum1 === "" || coordinateNum2 === "") {
+        return false;
+    }
+    if (Number.isNaN(coordinateNum1) || Number.isNaN(coordinateNum2)) {
+        return false;
+    } else {
+        if ((coordinateNum1 < 180 && coordinateNum2 < 180) && (coordinateNum1 > -180 && coordinateNum2 > -180)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+module.exports = { getCity, getResponse,controlCoordinate }
