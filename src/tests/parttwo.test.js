@@ -1,6 +1,6 @@
 test.each([
     [{lat: 36.216667, lng: 36.166667}, {lat: 39.93, lng: 32.85}, "680"],
-    [{lat: 15.0, lng: -30.0}, {lat: 15.0, lng: 45.0}, "8020.42"],
+    [{lat: 39.93, lng: 32.85}, "Istanbul", "300"],
   ])('Check Distance Calculating', (coordinate1, coordinate2, expectedDistance)=>{
 
     const parttwo = require('../parttwo');

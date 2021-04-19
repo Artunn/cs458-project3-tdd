@@ -26,6 +26,22 @@ async function partAButtonTrigger(){
     }
 }
 
+function partBButtonTrigger(){
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            alert("Your Browser does not support finding your location!")
+        }
+    }
+    async function showPosition(position) {
+        const response = await fetch(`http://localhost:8000/parttwo?lat=${position.coords.latitude}&lng=${position.coords.longitude}`);
+        let distanceToCityCenter = await response.text();
+        document.getElementById("partb-textlabel1").innerText = distanceToCityCenter;
+    }
+    getLocation();
+}
+
 function controlCoordinate(coordinateNum1, coordinateNum2) {
     if (coordinateNum1 === "" || coordinateNum2 === "") {
         return false;
@@ -39,12 +55,3 @@ function controlCoordinate(coordinateNum1, coordinateNum2) {
     }
     return false;
 }
-
-// let request = async () => {
-//     const response = await fetch('http://localhost:8000/hello');
-//     const data = await response.text();
-//     //dataName = data.name;
-// 	console.log(data);
-// }
-
-//request();

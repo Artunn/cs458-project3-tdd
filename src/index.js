@@ -21,12 +21,16 @@ app.get('/partone', cors(),(req, res) => {
 });
 
 app.get('/parttwo', cors(),(req, res) => {
-  const asyncCalculateDistance = (async() => {
-    let result = await parttwo.getCity(req.query.lat, req.query.lng);
 
-    res.send(result);
+  const asyncCalculateDistance = (async() => {
+    let cityName = await partone.getCity(req.query.lat, req.query.lng);
+    let distance = await parttwo.calculateDistance({lat: req.query.lat, lng: req.query.lng}, cityName);
+
+    res.send(distance);
+
   });
   asyncCalculateDistance();
+
 });
 
 app.get('/partthree', cors(),(req, res) => {
