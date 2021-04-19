@@ -1,0 +1,23 @@
+#map {
+    height: 50%;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .parta .inputsandstuff  {
+    margin: 0.4rem 0 0.4rem 4rem;
+    display: flex;
+    font-size: 0.5rem;
+  }
+  
+  .parta .inputsandstuff input  {
+    margin: 0.3rem;
+  }
+  
+  .parta .inputsandstuff h1  {
+    margin-left: 1rem;
+  }

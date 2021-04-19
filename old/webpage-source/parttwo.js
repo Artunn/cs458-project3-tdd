@@ -43,36 +43,13 @@ async function calculateDistance(coordinate1, coordinate2) {
     
 }
 
-function makeRequest (method, url, done) {
-  var xhr = new XMLHttpRequest();
-  xhr.open(method, url);
-  xhr.onload = function () {
+function getRequest(coordinate1, coordinate2) {
 
-    done(JSON.parse(xhr.response));
-  };
-  xhr.onerror = function () {
-      console.log("bbb")
-    done(JSON.parse(xhr.response));
-  };
-  
-  xhr.send();
-}
-
-function testSt() {
-  alert('hey');
-  const bounds = new google.maps.LatLngBounds();
-  const markersArray = [];
-  const origin1 = { lat: 55.93, lng: -3.118 };
-  const origin2 = "Greenwich, England";
-  const destinationA = "Stockholm, Sweden";
-  const destinationB = { lat: 50.087, lng: 14.421 };
-
-  const geocoder = new google.maps.Geocoder();
   const service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
     {
-      origins: [origin1, origin2],
-      destinations: [destinationA, destinationB],
+      origins: [coordinate1],
+      destinations: [coordinate2],
       travelMode: google.maps.TravelMode.DRIVING,
       unitSystem: google.maps.UnitSystem.METRIC,
       avoidHighways: false,
@@ -88,4 +65,4 @@ function testSt() {
   );
 }
 
-module.exports = { calculateDistance, testSt }
+module.exports = { calculateDistance }
