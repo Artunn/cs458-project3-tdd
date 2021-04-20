@@ -20,7 +20,6 @@ async function getDistanceToEarthCenter(coordinateNum1, coordinateNum2) {
     try {
         const response = await this.getResponse(url);
         let height = response.data.results[0].elevation;
-        //console.log(response);
         console.log("elevation: " + height);
         let distance = calculateDistance(coordinateNum1, coordinateNum2, height);
         return distance.toString();
@@ -54,11 +53,6 @@ function calculateDistance(lat, lon, h){
     var b = 6356752.314245;     // Derived Earth semiminor axis (m)
     var f = (a - b) / a;           // Ellipsoid Flatness
     var f_inv = 1.0 / f;       // Inverse flattening
-
-    //const double f_inv = 298.257223563; // WGS-84 Flattening Factor of the Earth 
-    //const double b = a - a / f_inv;
-    //const double f = 1.0 / f_inv;
-
     var a_sq = a * a;
     var b_sq = b * b;
     var e_sq = f * (2 - f);    // Square of Eccentricity

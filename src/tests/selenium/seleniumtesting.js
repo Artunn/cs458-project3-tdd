@@ -62,3 +62,42 @@ describe('Part two test cases', function () {
     }).timeout(10000)
   })
 })
+
+describe('Part C test cases', function () {
+  let coordinate1, coordinate2, sendbutton, sendAutoButton;
+  describe('#Check existance of text fields and buttons', function () {
+    it('#Coordinate 1 text field must not be null', function () {
+      return driver.wait(until.elementLocated(By.id('partc-coordinate1')), 10 * 1000).then(el => {coordinate1 = el;});
+    }).timeout(20000)
+
+    it('#Coordinate 2 text field must not be null',  function () {
+      return driver.wait(until.elementLocated(By.id('partc-coordinate2')), 10 * 1000).then(el => {coordinate2 = el;});
+    }).timeout(20000)
+
+    it('#Part C Send button must not be null',  function () {
+      return driver.wait(until.elementLocated(By.id('partc-button')), 10 * 1000).then(el => {sendbutton = el;});
+    }).timeout(20000)
+
+    it('#Part C Send Auto(By device GPS location) button must not be null',  function () {
+      return driver.wait(until.elementLocated(By.id('partc-button-auto')), 10 * 1000).then(el => {sendAutoButton = el;});
+    }).timeout(20000)
+
+  })
+
+  describe('#End user testing', function () {
+    it('#End user test with right values', async function () {
+      await coordinate1.sendKeys("41.0082");
+      await coordinate2.sendKeys("28.9784");
+      await sendbutton.click();
+      console.log(driver.findElement(By.id("partc-textdata")).innerText);
+      assert.notEqual("6369004.316294169",driver.findElement(By.id("partc-textdata")).innerText);
+    }).timeout(20000)
+
+    it('#End user test with device GPS values', async function () {
+      await sendAutoButton.click();
+      console.log(driver.findElement(By.id("partc-textdata")).innerText);
+      assert.notEqual("6370322.2606166955",driver.findElement(By.id("partc-textdata")).innerText);
+      
+    }).timeout(20000)
+  })
+})
