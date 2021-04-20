@@ -56,7 +56,7 @@ async function partCButtonTrigger(){
         const response = await fetch(`http://localhost:8000/partthree?lat=${coordinate1}&lng=${coordinate2}`);
         distance = await response.text();
         console.log("Distance is " + distance);
-        document.getElementById("partc-textdata").innerText = distance;
+        document.getElementById("partc-textdata").innerText = "" + distance + " m";
         //alert("hello there sailer ! ");
     }else{
         document.getElementById("partc-textdata").innerText = "Problematic coordinate input";
