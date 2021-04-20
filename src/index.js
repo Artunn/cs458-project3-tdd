@@ -43,7 +43,6 @@ app.get('/partthree', cors(),(req, res) => {
       console.log("distance is " + distance_to_earth_center);
       res.send(distance_to_earth_center);
     }catch(err){
-      console.log("inside catch");
       console.log(err);
     }
 

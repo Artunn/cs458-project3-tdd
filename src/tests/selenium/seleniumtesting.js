@@ -4,6 +4,7 @@ test = require('selenium-webdriver/testing');
 webdriver = require('selenium-webdriver');
 
 const url = "file:///W:/Desktop/Bilkent/CS458/Projects/cs458-project3-tdd/src/client_side/index.html";
+const url = "/Applications/MAMP/htdocs/cs458-project3-tdd/src/client_side.index.html"; // utku uml
 let driver = new Builder().forBrowser("firefox").build();
 driver.get(url);
 describe('Part one test cases', function () {

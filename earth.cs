@@ -11,6 +11,22 @@ using static System.Math;
 // Also helpful are the guidance notes here: http://www.epsg.org/Guidancenotes.aspx
 public class GpsUtils
 {
+    private const string Value = "hello earth";
+
+    public static void Main(string[] args){
+        double distance_1 = 0;
+        double distance_2 = 0;
+        double distance_3 = 0;
+        double distance_4 = 0;
+        CalculateDistanceToEarthCenter(41.0082, 28.9784, 30.60943031311035, out distance_1); // coordinates of istanbul
+        CalculateDistanceToEarthCenter(39.9334, 32.8597, 891.437744140625, out distance_2); // coordinates of ankara
+        CalculateDistanceToEarthCenter(40.5499, 34.9537, 806.1024780273438, out distance_3); // coordinates of corum
+        CalculateDistanceToEarthCenter(36.7783, 119.4179, 13.07790184020996, out distance_4); // coordinates of california
+        Console.WriteLine(distance_1);
+        Console.WriteLine(distance_2);
+        Console.WriteLine(distance_3);
+        Console.WriteLine(distance_4);
+    }
 
     // WGS-84 geodetic constants
     const double a = 6378137.0;         // WGS-84 Earth semimajor axis (m)
@@ -26,6 +42,16 @@ public class GpsUtils
     const double a_sq = a * a;
     const double b_sq = b * b;
     const double e_sq = f * (2 - f);    // Square of Eccentricity
+
+    public static void CalculateDistanceToEarthCenter(double lat, double lon, double h, out double distance){
+        double x = 0.0;
+        double y = 0.0;
+        double z = 0.0;
+        double p = 0.0;
+        GeodeticToEcef(lat,lon,h,out x, out y,out z); 
+        p = Sqrt(x * x + y * y);
+        distance = Sqrt(p * p + z * z);
+    }
 
     // Converts WGS-84 Geodetic point (lat, lon, h) to the 
     // Earth-Centered Earth-Fixed (ECEF) coordinates (x, y, z).

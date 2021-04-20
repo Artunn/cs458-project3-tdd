@@ -23,7 +23,7 @@ async function getDistanceToEarthCenter(coordinateNum1, coordinateNum2) {
         //console.log(response);
         console.log("elevation: " + height);
         let distance = calculateDistance(coordinateNum1, coordinateNum2, height);
-        return distance;
+        return distance.toString();
     } catch (error) {
         console.error(error);
     }
@@ -48,7 +48,7 @@ function controlCoordinate(coordinateNum1, coordinateNum2) {
     return false;
 }
 
-async function calculateDistance(lat, lon, h){
+function calculateDistance(lat, lon, h){
     // WGS-84 geodetic constants
     var a = 6378137.0;         // WGS-84 Earth semimajor axis (m)
     var b = 6356752.314245;     // Derived Earth semiminor axis (m)
@@ -86,7 +86,7 @@ async function calculateDistance(lat, lon, h){
 
     p = Math.sqrt((x * x) + (y * y));
     distance = Math.sqrt((p * p) + (z * z));
-    return distance.toString();
+    return distance;
 }
 
 module.exports = { getDistanceToEarthCenter, getResponse, controlCoordinate, calculateDistance }

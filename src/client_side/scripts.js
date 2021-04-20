@@ -63,6 +63,22 @@ async function partCButtonTrigger(){
     }
 }
 
+async function partCButtonTriggerAuto(){
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(getDistanceToEarthCenterAuto);
+        } else { 
+            alert("Your Browser does not support finding your location!")
+        }
+    }
+    async function getDistanceToEarthCenterAuto(position) {
+        const response = await fetch(`http://localhost:8000/partthree?lat=${position.coords.latitude}&lng=${position.coords.longitude}`);
+        let distanceToEarthCenterAutomatically = await response.text();
+        document.getElementById("partc-textdata").innerText = distanceToEarthCenterAutomatically;
+    }
+    getLocation();
+}
+
 function controlCoordinate(coordinateNum1, coordinateNum2) {
     if (coordinateNum1 === "" || coordinateNum2 === "") {
         return false;
