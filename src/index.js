@@ -34,9 +34,21 @@ app.get('/parttwo', cors(),(req, res) => {
 });
 
 app.get('/partthree', cors(),(req, res) => {
-  partthree.bar = () => {return "yeah"};
+  if(!req.params)
+    console.log("Error")
 
-  res.send(partthree.foo());
+  const asyncFindDistanceToCenter = (async() => {
+    try{
+      let distance_to_earth_center = await partthree.getDistanceToEarthCenter(req.query.lat, req.query.lng);
+      console.log("distance is " + distance_to_earth_center);
+      res.send(distance_to_earth_center);
+    }catch(err){
+      console.log("inside catch");
+      console.log(err);
+    }
+
+  });
+  asyncFindDistanceToCenter();
 });
 
 app.listen(port, () => {

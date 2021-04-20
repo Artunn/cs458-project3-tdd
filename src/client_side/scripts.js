@@ -26,7 +26,7 @@ async function partAButtonTrigger(){
     }
 }
 
-function partBButtonTrigger(){
+async function partBButtonTrigger(){
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
@@ -42,6 +42,27 @@ function partBButtonTrigger(){
     getLocation();
 }
 
+async function partCButtonTrigger(){
+    let distance = "";
+    let coordinate1 = document.getElementById("partc-coordinate1").value;
+    let coordinate2 = document.getElementById("partc-coordinate2").value;
+    if(controlCoordinate(coordinate1, coordinate2)){
+        const pos = {
+            lat: parseFloat(coordinate1),
+            lng: parseFloat(coordinate2)
+          };
+        console.log(pos)
+        map.setCenter(pos);
+        const response = await fetch(`http://localhost:8000/partthree?lat=${coordinate1}&lng=${coordinate2}`);
+        distance = await response.text();
+        console.log("Distance is " + distance);
+        document.getElementById("partc-textdata").innerText = distance;
+        //alert("hello there sailer ! ");
+    }else{
+        document.getElementById("partc-textdata").innerText = "Problematic coordinate input";
+    }
+}
+
 function controlCoordinate(coordinateNum1, coordinateNum2) {
     if (coordinateNum1 === "" || coordinateNum2 === "") {
         return false;
@@ -55,3 +76,4 @@ function controlCoordinate(coordinateNum1, coordinateNum2) {
     }
     return false;
 }
+
