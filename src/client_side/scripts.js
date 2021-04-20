@@ -75,6 +75,11 @@ async function partCButtonTriggerAuto(){
         const response = await fetch(`http://localhost:8000/partthree?lat=${position.coords.latitude}&lng=${position.coords.longitude}`);
         let distanceToEarthCenterAutomatically = await response.text();
         document.getElementById("partc-textdata").innerText = distanceToEarthCenterAutomatically;
+        const pos = {
+            lat: parseFloat(position.coords.latitude),
+            lng: parseFloat(position.coords.longitude)
+          };
+        map.setCenter(pos);
     }
     getLocation();
 }
