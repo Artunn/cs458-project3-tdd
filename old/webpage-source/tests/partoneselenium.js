@@ -4,7 +4,9 @@ test = require('selenium-webdriver/testing');
 webdriver = require('selenium-webdriver');
 
 describe('Part one test cases', function () {
-  const url = "file:///W:/Desktop/Bilkent/CS458/Projects/cs458-project3-tdd/webpage-source/index.html";
+  //const url = "file:///W:/Desktop/Bilkent/CS458/Projects/cs458-project3-tdd/webpage-source/index.html";
+  //const url = "file:///Applications/MAMP/htdocs/cs458-project3-tdd/old/webpage-source/index.html";
+  const url = "file:///Applications/MAMP/htdocs/cs458-project3-tdd/src/client_side/index.html";
   let driver = new Builder().forBrowser("firefox").build();
   driver.get(url);
   let coordinate1, coordinate2, sendbutton;

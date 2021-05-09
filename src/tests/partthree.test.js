@@ -1,3 +1,4 @@
+
 const partthree = require('../partthree');
 
 test('Check coordinate values',()=>{
@@ -13,14 +14,15 @@ test('Check distance of center to the Earth', () =>{
     expect(partthree.calculateDistance(40.5499, 34.9537, 806.1024780273438)).toBeCloseTo(6369948.79128152); // coordinates of corum
     expect(partthree.calculateDistance(36.7783, 119.4179, 13.07790184020996)).toBeCloseTo(6370525.634507292); // coordinates of california
 })
-
+/*
 test.each([
-  [{lat: 41.0082, lng: 28.9784}, "6369004.316294169"],
-  [{lat: 39.9334, lng: 32.8597}, "6370260.734445383"],
-  [{lat: 40.5499, lng: 34.9537}, "6369948.79128152"],
-  [{lat: 36.7783, lng: 119.4179}, "6370525.634507292"],
+  [41.0082, 28.9784, "6369004.316294169"],
+  [39.9334, 32.8597, "6370260.734445383"],
+  [40.5499, 34.9537, "6369948.79128152"],
+  [36.7783, 119.4179, "6370525.634507292"],
 ])('Check Distance Calculating to Earth Center', (coordinate1, coordinate2, expectedDistance)=>{
   const partthree = require('../partthree');
+
   partthree.getResponse = jest.fn(async (url) => {
     return {
       data: {
@@ -32,5 +34,27 @@ test.each([
       }
     }
   });
-  return expect( partthree.getDistanceToEarthCenter(coordinate1, coordinate2)).resolves.toEqual(expectedDistance);
+  return expect(partthree.getDistanceToEarthCenterT(coordinate1, coordinate2)).resolves.toEqual(expectedDistance);
+})
+*/
+test.each([
+  [41.0082, 28.9784, 30.60943031311035, "6369004.316294169"],
+  [39.9334, 32.8597, 891.437744140625, "6370260.734445383"],
+  [40.5499, 34.9537, 806.1024780273438, "6369948.79128152"],
+  [36.7783, 119.4179, 13.07790184020996, "6370525.634507292"],
+])('Check Distance Calculating to Earth Center', (coordinate1, coordinate2, expectedElevation, expectedDistance)=>{
+  const partthree = require('../partthree');
+
+  partthree.getResponse = jest.fn(async (url) => {
+    return {
+      data: {
+        results: [
+          {
+            elevation : expectedElevation
+          }
+        ]
+      }
+    }
+  });
+  return expect(partthree.getDistanceToEarthCenter(coordinate1, coordinate2)).resolves.toEqual(expectedDistance);
 })

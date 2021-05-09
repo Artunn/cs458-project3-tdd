@@ -4,7 +4,8 @@ test = require('selenium-webdriver/testing');
 webdriver = require('selenium-webdriver');
 
 describe('Part two test cases', function () {
-  const url = "file:///D:/CS/Current/cs458-project3-tdd/webpage-source/index.html";
+  //const url = "file:///D:/CS/Current/cs458-project3-tdd/webpage-source/index.html";
+  const url = "file:///Applications/MAMP/htdocs/cs458-project3-tdd/src/client_side/index.html";
   let driver = new Builder().forBrowser("firefox").build();
   driver.get(url);
 
